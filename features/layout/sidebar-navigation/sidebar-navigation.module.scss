@@ -134,12 +134,6 @@
 
 .collapseMenuItem {
   display: none;
-  position: relative;
-
-  &.isCollapsed {
-    transform: rotate(180deg);
-    transition: 300ms;
-  }
 
   @media (min-width: breakpoint.$desktop) {
     display: flex;
