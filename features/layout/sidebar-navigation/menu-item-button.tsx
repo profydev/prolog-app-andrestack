@@ -28,3 +28,5 @@ export function MenuItemButton({
     </li>
   );
 }
+
+// Clicking the “Support” button in the sidebar navigation should open the user’s email app.
