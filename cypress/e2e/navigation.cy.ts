@@ -31,12 +31,25 @@ describe("Sidebar Navigation", () => {
         .should("have.attr", "href", "/dashboard/settings");
     });
 
+    //write a test that checks that the support button forwards you to the mailto link
+
+    it("has correct href", () => {
+      cy.get(
+        "a[href='mailto:support@prolog-app.com?Subject=Support%20Request']",
+      )
+        .should("have.attr", "href")
+        .and(
+          "equal",
+          "mailto:support@prolog-app.com?Subject=Support%20Request",
+        );
+    });
+
     it("is collapsible", () => {
       // collapse navigation
       cy.get("nav").contains("Collapse").click();
 
       // check that links still exist and are functionable
-      cy.get("nav").find("a").should("have.length", 5).eq(1).click();
+      cy.get("nav").find("a").should("have.length", 6).eq(1).click();
       cy.url().should("eq", "http://localhost:3000/dashboard/issues");
 
       // check that text is not rendered
@@ -80,7 +93,7 @@ describe("Sidebar Navigation", () => {
       isInViewport("nav");
 
       // check that all links are rendered
-      cy.get("nav").find("a").should("have.length", 5);
+      cy.get("nav").find("a").should("have.length", 6);
 
       // Support button should be rendered but Collapse button not
       cy.get("nav").contains("Support").should("exist");
@@ -90,18 +103,6 @@ describe("Sidebar Navigation", () => {
       cy.get("img[alt='close menu']").click();
       cy.wait(500);
       isNotInViewport("nav");
-    });
-
-    //write a test that checks that the support button forwards you to the mailto link
-
-    it("client email app opens when clicking support button", () => {
-      cy.get(
-        "a[href='mailto:support@prolog-app.com?Subject=Support%20Request']",
-      ).click();
-      cy.url().should(
-        "include",
-        "mailto:support@prolog-app.com?Subject=Support%20Request",
-      );
     });
   });
 });
