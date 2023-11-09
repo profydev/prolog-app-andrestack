@@ -95,10 +95,11 @@ describe("Sidebar Navigation", () => {
     //write a test that checks that the support button forwards you to the mailto link
 
     it("client email app opens when clicking support button", () => {
-      cy.get("nav").contains("Support").click();
+      cy.get(
+        "a[href='mailto:support@prolog-app.com?Subject=Support%20Request']",
+      ).click();
       cy.url().should(
-        "have.attr",
-        "href",
+        "include",
         "mailto:support@prolog-app.com?Subject=Support%20Request",
       );
     });
