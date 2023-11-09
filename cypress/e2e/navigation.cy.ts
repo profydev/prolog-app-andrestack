@@ -91,5 +91,16 @@ describe("Sidebar Navigation", () => {
       cy.wait(500);
       isNotInViewport("nav");
     });
+
+    //write a test that checks that the support button forwards you to the mailto link
+
+    it("client email app opens when clicking support button", () => {
+      cy.get("nav").contains("Support").click();
+      cy.url().should(
+        "have.attr",
+        "href",
+        "mailto:support@prolog-app.com?Subject=Support%20Request",
+      );
+    });
   });
 });
