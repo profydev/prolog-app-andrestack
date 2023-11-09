@@ -7,7 +7,7 @@ type MenuItemProps = {
   className?: string;
   text: string;
   iconSrc: string;
-  onClick: () => void;
+  onClick?: () => void;
   isCollapsed: boolean;
 };
 
