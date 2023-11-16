@@ -86,6 +86,7 @@ export function SidebarNavigation() {
                 window.location.href =
                   "mailto:support@prolog-app.com?Subject=Support%20Request";
               }}
+              style={{ textDecoration: "none" }}
             >
               <MenuItemButton
                 text="Support"
