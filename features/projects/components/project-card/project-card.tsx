@@ -23,6 +23,7 @@ const statusColors = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  console.log(project);
   const { name, language, numIssues, numEvents24h, status } = project;
 
   return (
