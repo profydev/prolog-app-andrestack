@@ -26,7 +26,7 @@ export function Badge({
   children,
   size = BadgeSize.md,
   color = BadgeColor.primary,
-}: BadgeProps) {
+}: BadgeProps): React.JSX.Element {
   return (
     <div className={classNames(styles.container, styles[size], styles[color])}>
       {children}
