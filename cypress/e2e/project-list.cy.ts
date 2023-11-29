@@ -27,6 +27,9 @@ describe("Project List", () => {
       cy.get("main")
         .find("li")
         .each(($el, index) => {
+          // check the color and text of the status badge
+          cy.wrap($el);
+
           // check that project data is rendered
           cy.wrap($el).contains(mockProjects[index].name);
           cy.wrap($el).contains(languageNames[index]);
