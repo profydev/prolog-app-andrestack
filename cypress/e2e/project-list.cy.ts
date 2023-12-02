@@ -40,13 +40,19 @@ describe("Project List", () => {
         info: "rgb(236, 253, 243)",
       };
 
+      enum Status {
+        error = "error",
+        warning = "warning",
+        info = "info",
+      }
+
       // get all project cards
       cy.get("main")
         .find("li")
         .each(($el, index) => {
-          type StatusKey = "error" | "warning" | "info";
-          const status: StatusKey = mockProjects[index].status as StatusKey;
-          const projects = mockProjects[index];
+          type StatusKey = keyof typeof Status;
+          const status = mockProjects[index].status as StatusKey;
+          const project = mockProjects[index];
 
           // check the color and text of the status badges
           cy.get("[data-testid='project-card_badge']")
@@ -67,12 +73,12 @@ describe("Project List", () => {
             .and("have.css", "color", expectedColor.info);
 
           // check that project data is rendered
-          cy.wrap($el).contains(projects.name);
+          cy.wrap($el).contains(project.name);
           cy.wrap($el).contains(languageNames[index]);
-          cy.wrap($el).contains(projects.numIssues);
-          cy.wrap($el).contains(projects.numEvents24h);
+          cy.wrap($el).contains(project.numIssues);
+          cy.wrap($el).contains(project.numEvents24h);
           cy.wrap($el).contains(expectedStatus[status]);
-          // cy.wrap($el).contains(capitalize(mockProjects[index].status));
+
           cy.wrap($el)
             .find("a")
             .should("have.attr", "href", "/dashboard/issues");
