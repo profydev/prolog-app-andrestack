@@ -1,4 +1,5 @@
 import mockProjects from "../fixtures/projects.json";
+import { ProjectStatus } from "@api/projects.types";
 
 describe("Project List", () => {
   beforeEach(() => {
@@ -40,17 +41,11 @@ describe("Project List", () => {
         info: "rgb(236, 253, 243)",
       };
 
-      enum Status {
-        error = "error",
-        warning = "warning",
-        info = "info",
-      }
-
       // get all project cards
       cy.get("main")
         .find("li")
         .each(($el, index) => {
-          type StatusKey = keyof typeof Status;
+          type StatusKey = keyof typeof ProjectStatus;
           const status = mockProjects[index].status as StatusKey;
           const project = mockProjects[index];
 
