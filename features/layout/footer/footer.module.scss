@@ -1,0 +1,39 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+@use "@styles/breakpoint";
+@use "@styles/misc";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background: color.$gray-50;
+  width: inherit;
+  height: 60px;
+
+  @media (min-width: breakpoint.$desktop) {
+    flex-direction: row;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding-block: space.$s8;
+
+  @media (min-width: breakpoint.$desktop) {
+    flex-direction: row;
+  }
+}
+
+.column {
+  flex: 1;
+  padding: space.$s8;
+  border-top: 1px solid color.$gray-800;
+
+  @media (min-width: breakpoint.$desktop) {
+    border-top: none;
+    border-left: 1px solid color.$gray-800;
+  }
+}
