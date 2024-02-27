@@ -4,36 +4,60 @@
 @use "@styles/breakpoint";
 @use "@styles/misc";
 
-.footer {
-  display: flex;
-  flex-direction: column;
-  background: color.$gray-50;
-  width: inherit;
+.footerContainer {
+  overflow: hidden;
+  background-color: color.$gray-50;
+  color: color.$gray-400;
+  min-width: fit-content;
   height: 60px;
-
-  @media (min-width: breakpoint.$desktop) {
-    flex-direction: row;
-  }
-}
-
-.container {
   display: flex;
-  flex-direction: column;
-  background: transparent;
-  padding-block: space.$s8;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 space.$s8 0 space.$s8;
 
   @media (min-width: breakpoint.$desktop) {
     flex-direction: row;
+    gap: space.$s10;
   }
 }
 
-.column {
-  flex: 1;
-  padding: space.$s8;
-  border-top: 1px solid color.$gray-800;
+.footerText {
+  font-size: font.$text-md-regular;
+  color: color.$gray-400;
 
   @media (min-width: breakpoint.$desktop) {
-    border-top: none;
-    border-left: 1px solid color.$gray-800;
+    text-align: left;
+  }
+}
+
+.linksList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: space.$s10;
+  font-size: inherit;
+  color: inherit;
+  list-style: none;
+
+  a {
+    text-decoration: none;
+    color: color.$gray-400;
+  }
+}
+
+// @media (min-width: breakpoint.$desktop) {
+//   flex-direction: row;
+//   gap: space.$s10;
+// }
+
+.footerLogo {
+  display: flex;
+  justify-content: flex-end;
+
+  //   margin-inline-start: space.$s6;
+
+  @media (min-width: breakpoint.$desktop) {
+    margin: space.$s10;
   }
 }
