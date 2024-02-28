@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./footer.module.scss";
-import Image from "next/image";
+// import Image from "next/image";
+import packageJson from "../../../package.json";
 
 const footerLinks = [
   { text: "Docs", href: "#" },
@@ -9,20 +10,23 @@ const footerLinks = [
   { text: "Community", href: "#" },
 ];
 
+const appVersion = packageJson.version;
+
 export function Footer() {
   return (
-    <footer>
-      <div className={styles.footerContainer}>
-        <div className={styles.footerText}>Version 14.5.1</div>
-        <ul className={styles.linksList}>
-          {footerLinks.map((footerLink, index) => (
-            <li key={index}>
-              <a href={footerLink.href}>{footerLink.text}</a>
-            </li>
-          ))}
-          <div className={styles.footerLogo}></div>
-        </ul>
-        <Image
+    <footer className={styles.footer}>
+      <div className={styles.version}>Version {appVersion}</div>
+      <ul className={styles.links}>
+        {footerLinks.map((footerLink, index) => (
+          <li key={index}>
+            <a href={footerLink.href}>{footerLink.text}</a>
+          </li>
+        ))}
+      </ul>
+      {/* eslint-disable-next-line @next/next/no-img-element*/}
+      <div className={styles.logo}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="icons/logo-small.svg"
           alt="Prolog Logo"
           width={23}
