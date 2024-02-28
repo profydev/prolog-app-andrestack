@@ -12,7 +12,9 @@ export default {
   },
 } as Meta<typeof SidebarNavigation>;
 
-const Template: StoryFn<typeof SidebarNavigation> = () => <SidebarNavigation />;
+const Template: StoryFn<typeof SidebarNavigation> = () => (
+  <SidebarNavigation className="" />
+);
 
 export const Default = Template.bind({});
 Default.parameters = {
